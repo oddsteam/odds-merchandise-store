@@ -7,25 +7,26 @@ on:
     branches: [main]
 
 jobs:
-  name: Tests
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  ci:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.3.0
-        bundler-cache: true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.0
+          bundler-cache: true
 
-    - name: Install dependencies
-      run: |
-        bundle install --jobs 4 --retry 3
+      - name: Install dependencies
+        run: |
+          bundle install --jobs 4 --retry 3
 
-    - name: Run Tests
-      env:
-        RAILS_ENV: test
-      run: |
-        bundle exec rails db:migrate
-        bundle exec rails test
+      - name: Run Tests
+        env:
+          RAILS_ENV: test
+        run: |
+          bundle exec rails db:migrate
+          bundle exec rails test
