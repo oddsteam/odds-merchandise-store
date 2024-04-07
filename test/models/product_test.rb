@@ -1,17 +1,20 @@
 require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
-  test "valid product" do
-    product = Product.new(
+  def setup
+    @product = Product.new(
       name: "ODDS Whole Bean Coffee",
       description: "Perfect start to your day",
       price: 25.00,
     )
-    assert product.valid?
+  end
+
+  test "valid product" do
+    assert @product.valid?
   end
 
   test "should not save product without name" do
-    product = Product.new
-    assert_not product.save
+    @product.name = nil
+    assert_not @product.valid?
   end
 end
