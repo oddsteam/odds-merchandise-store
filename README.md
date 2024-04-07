@@ -1,2 +1,1 @@
-# odds-merchandise-store
-ODDS| Merchandise Store
+# ODDS| Merchandise Store
