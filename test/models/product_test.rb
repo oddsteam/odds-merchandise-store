@@ -2,11 +2,7 @@ require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
   def setup
-    @product = Product.new(
-      name: "ODDS Whole Bean Coffee",
-      description: "Perfect start to your day",
-      price: 25.00,
-    )
+    @product = products(:valid)
   end
 
   test "valid product" do
